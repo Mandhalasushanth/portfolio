@@ -68,6 +68,78 @@
     .section-num { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
     h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.2; }
     .section-rule { width: 60px; height: 2px; background: var(--accent); margin-top: 1rem; }
+    #education { background: var(--bg); }
+    .education-timeline { display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; }
+    .edu-card {
+      display: grid; grid-template-columns: 140px 1fr;
+      gap: 2rem; align-items: start;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.8rem 2rem;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .edu-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--accent); opacity: 0.6;
+    }
+    .edu-card:hover { border-color: rgba(200,169,110,0.4); transform: translateX(4px); }
+    .edu-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem; color: var(--accent);
+      letter-spacing: 0.05em; padding-top: 0.2rem;
+      font-weight: 700;
+    }
+    .edu-degree { font-size: 1.05rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+    .edu-field { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .edu-institution { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.6rem; font-style: italic; }
+    .edu-score { font-size: 0.85rem; color: var(--muted); }
+    .edu-score span { color: var(--accent); font-weight: 600; }
+    @media (max-width: 768px) { .edu-card { grid-template-columns: 1fr; gap: 0.5rem; } }
+
+    /* ─── CERTIFICATIONS ─── */
+    #certifications { background: var(--surface); }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .cert-card {
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.6rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .cert-card:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-3px); }
+    .cert-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .cert-issuer { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; font-weight: 600; }
+    .cert-title { font-size: 0.95rem; color: var(--text); line-height: 1.5; margin-bottom: 0.5rem; }
+    .cert-date { font-size: 0.78rem; color: var(--muted); }
+
+    /* ─── ACHIEVEMENTS ─── */
+    #achievements { background: var(--bg); }
+    .achieve-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .achieve-card {
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.6rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .achieve-card:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-3px); }
+    .achieve-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .achieve-title { font-size: 0.95rem; color: var(--text); font-weight: 500; margin-bottom: 0.4rem; line-height: 1.4; }
+    .achieve-desc { font-size: 0.82rem; color: var(--muted); }
+
+    /* ─── PERSONAL ─── */
+    #personal { background: var(--surface); }
+    .personal-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem; max-width: 800px;
+    }
+    .personal-item {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.4rem 1.6rem;
+      transition: border-color 0.3s;
+    }
+    .personal-item:hover { border-color: rgba(200,169,110,0.4); }
+    .personal-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .personal-val { font-size: 0.95rem; color: var(--text); line-height: 1.5; }
+
     #about { background: var(--surface); }
     .about-grid { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 3rem; align-items: start; }
     .profile-photo-wrap { position: relative; }
@@ -172,8 +244,11 @@
   <nav>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -213,7 +288,7 @@
         <p>From real-time weather apps to AI interview platforms, I enjoy turning complex ideas into clean, accessible products. My projects span React, Python, Next.js, and LLM integrations.</p>
         <p>I'm always exploring new technologies — whether it's integrating <strong>LLaMA models</strong>, building virtual try-on experiences with <strong>Gemini AI</strong>, or crafting quiz engines with smart data management.</p>
         <div class="stats">
-          <div><div class="stat-num">4+</div><div class="stat-label">Projects Built</div></div>
+          <div><div class="stat-num">6+</div><div class="stat-label">Projects Built</div></div>
           <div><div class="stat-num">10+</div><div class="stat-label">Technologies</div></div>
           <div><div class="stat-num">AI</div><div class="stat-label">Focused</div></div>
         </div>
@@ -227,9 +302,50 @@
     </div>
   </section>
 
+  <section id="education">
+    <div class="section-header reveal">
+      <div class="section-num">02 — Education</div>
+      <h2>Academic Qualifications</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="education-timeline">
+
+      <div class="edu-card reveal">
+        <div class="edu-year">2022 – 2026</div>
+        <div class="edu-content">
+          <div class="edu-degree">Bachelor of Technology (B.Tech)</div>
+          <div class="edu-field">Computer Engineering (Artificial Intelligence)</div>
+          <div class="edu-institution">Marwadi University, Rajkot, Gujarat</div>
+          <div class="edu-score">CGPA: <span>8.10</span></div>
+        </div>
+      </div>
+
+      <div class="edu-card reveal">
+        <div class="edu-year">2020 – 2022</div>
+        <div class="edu-content">
+          <div class="edu-degree">Intermediate (State Board)</div>
+          <div class="edu-field">SR Junior College</div>
+          <div class="edu-institution">Warangal, Telangana</div>
+          <div class="edu-score">Percentage: <span>93.5%</span></div>
+        </div>
+      </div>
+
+      <div class="edu-card reveal">
+        <div class="edu-year">2019 – 2020</div>
+        <div class="edu-content">
+          <div class="edu-degree">Secondary School Certificate (SSC)</div>
+          <div class="edu-field">Kakatiya High School</div>
+          <div class="edu-institution">Jammikunta, Telangana</div>
+          <div class="edu-score">Percentage: <span>98%</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <section id="projects">
     <div class="section-header reveal">
-      <div class="section-num">02 — Projects</div>
+      <div class="section-num">03 — Projects</div>
       <h2>Selected Work</h2>
       <div class="section-rule"></div>
     </div>
@@ -239,9 +355,12 @@
         <div class="project-num">01</div>
         <div class="project-icon">🌤️</div>
         <h3>Weather Web Application</h3>
-        <p>A responsive weather app built with React.js and Vite. Integrates real-time weather data via APIs with React Hooks for dynamic updates and reusable component architecture.</p>
-        <div class="project-tags"><span class="ptag">React.js</span><span class="ptag">Vite</span><span class="ptag">REST API</span><span class="ptag">CSS</span></div>
-        <a href="https://github.com/Mandhalasushanth/weatherapp.git" target="_blank" class="project-link">View on GitHub →</a>
+        <p>A responsive weather app built with React and the OpenWeatherMap API. Search weather by city and view temperature, humidity, and wind speed with dynamically updating weather icons.</p>
+        <div class="project-tags"><span class="ptag">React.js</span><span class="ptag">OpenWeatherMap API</span><span class="ptag">CSS</span></div>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://github.com/Mandhalasushanth/weatherapp.git" target="_blank" class="project-link">GitHub →</a>
+          <a href="https://weatherapp-pearl-psi.vercel.app/" target="_blank" class="project-link">Live Demo →</a>
+        </div>
       </div>
 
       <div class="project-card reveal">
@@ -264,11 +383,37 @@
 
       <div class="project-card reveal">
         <div class="project-num">04</div>
+        <div class="project-icon">🧮</div>
+        <h3>Calculator</h3>
+        <p>A simple and responsive calculator built with HTML, CSS, Bootstrap, and JavaScript. Supports basic arithmetic operations with a clean, user-friendly interface.</p>
+        <div class="project-tags"><span class="ptag">HTML5</span><span class="ptag">CSS3</span><span class="ptag">Bootstrap</span><span class="ptag">JavaScript</span></div>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://github.com/mandhalasushanth/basic-calculator.git" target="_blank" class="project-link">GitHub →</a>
+          <a href="https://basic-calculator-r5mpibr7k-mandhalasushanths-projects.vercel.app/" target="_blank" class="project-link">Live Demo →</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">05</div>
+        <div class="project-icon">🎙️</div>
+        <h3>Text-to-Speech Translator</h3>
+        <p>An interactive Text-to-Speech Converter where users enter text and hear it spoken aloud. Built with the Web Speech API, it works directly in the browser with no dependencies.</p>
+        <div class="project-tags"><span class="ptag">HTML5</span><span class="ptag">CSS3</span><span class="ptag">JavaScript</span><span class="ptag">Web Speech API</span><span class="ptag">Vercel</span></div>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://github.com/Mandhalasushanth/Text-to-Speech-Converter.git" target="_blank" class="project-link">GitHub →</a>
+          <a href="https://text-to-speech-converter-git-main-mandhalasushanths-projects.vercel.app/" target="_blank" class="project-link">Live Demo →</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">06</div>
         <div class="project-icon">👗</div>
-        <h3>TryFit AI</h3>
-        <p>A virtual outfit visualization platform where users can try on outfits using AI. Built with Next.js and TypeScript, powered by Google Genkit and the Gemini API for intelligent visualization.</p>
-        <div class="project-tags"><span class="ptag">Next.js</span><span class="ptag">TypeScript</span><span class="ptag">Gemini API</span><span class="ptag">Google Genkit</span><span class="ptag">CSS</span></div>
-        <a href="#" class="project-link">Live Demo →</a>
+        <h3>TryFit — AI Multi-Angle Virtual Try-On</h3>
+        <p>An advanced AI-powered virtual try-on platform. Upload clothing images, customize AI model gender, pose, body type & skin tone, and generate realistic try-ons from front, side, or back view using Google Gemini 2.0.</p>
+        <div class="project-tags"><span class="ptag">Next.js</span><span class="ptag">TypeScript</span><span class="ptag">Tailwind CSS</span><span class="ptag">Gemini 2.0</span><span class="ptag">Genkit AI</span><span class="ptag">Radix UI</span></div>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://try-fit-main-git-main-mandhalasushanths-projects.vercel.app/" target="_blank" class="project-link">Live Demo →</a>
+        </div>
       </div>
 
     </div>
@@ -276,38 +421,167 @@
 
   <section id="skills">
     <div class="section-header reveal">
-      <div class="section-num">03 — Skills</div>
+      <div class="section-num">04 — Skills</div>
       <h2>Expertise</h2>
       <div class="section-rule"></div>
     </div>
     <div class="skills-grid">
       <div class="skill-card reveal">
-        <h3>Frontend</h3>
-        <div class="skill-item"><span class="skill-name">React.js</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Next.js</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">TypeScript</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">HTML / CSS / JS</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
-      </div>
-      <div class="skill-card reveal">
-        <h3>Backend &amp; AI</h3>
+        <h3>Programming Languages</h3>
         <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Streamlit</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">LLaMA / Ollama</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Gemini API</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Basics of AI/ML</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div></div>
       </div>
       <div class="skill-card reveal">
-        <h3>Tools &amp; Others</h3>
-        <div class="skill-item"><span class="skill-name">REST APIs</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Git / GitHub</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Vite</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Plotly / Data Viz</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div></div>
+        <h3>Web Technologies</h3>
+        <div class="skill-item"><span class="skill-name">HTML</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">CSS</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">React.js</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Databases</h3>
+        <div class="skill-item"><span class="skill-name">MySQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Libraries</h3>
+        <div class="skill-item"><span class="skill-name">Pandas</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:83%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">NumPy</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Matplotlib</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Tools &amp; Platforms</h3>
+        <div class="skill-item"><span class="skill-name">Git &amp; GitHub</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">VS Code</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Google Colab</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">LaTeX</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:68%"></div></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Deployment</h3>
+        <div class="skill-item"><span class="skill-name">Vercel</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Render</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">AWS</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Soft Skills</h3>
+        <div class="skill-item"><span class="skill-name">Communication</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Problem Solving</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Leadership</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Team Collaboration</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="section-header reveal">
+      <div class="section-num">05 — Certifications</div>
+      <h2>Certifications</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="cert-grid">
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏅</div>
+        <div class="cert-body">
+          <div class="cert-issuer">IBM</div>
+          <div class="cert-title">Python for Data Science and Design Thinking for Innovation</div>
+          <div class="cert-date">Oct 2023</div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏅</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Oracle</div>
+          <div class="cert-title">Database Programming with SQL</div>
+          <div class="cert-date">Nov 2023</div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏅</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Infosys Springboard</div>
+          <div class="cert-title">Machine Learning using Python</div>
+          <div class="cert-date">2024</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="section-header reveal">
+      <div class="section-num">06 — Achievements</div>
+      <h2>Achievements &amp; Extracurricular</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="achieve-grid">
+
+      <div class="achieve-card reveal">
+        <div class="achieve-icon">🏐</div>
+        <div class="achieve-body">
+          <div class="achieve-title">WEST ZONE Inter-University Kabaddi Participant</div>
+          <div class="achieve-desc">Gwalior (2022) &amp; Jhunjhunu (2024)</div>
+        </div>
+      </div>
+
+      <div class="achieve-card reveal">
+        <div class="achieve-icon">🏆</div>
+        <div class="achieve-body">
+          <div class="achieve-title">MU Kabaddi League Winner</div>
+          <div class="achieve-desc">Marwadi University — 2022, 2023 &amp; 2024</div>
+        </div>
+      </div>
+
+      <div class="achieve-card reveal">
+        <div class="achieve-icon">🥈</div>
+        <div class="achieve-body">
+          <div class="achieve-title">Khel Mahakumbh Kabaddi Runner-Up</div>
+          <div class="achieve-desc">Rajkot District — 2023 &amp; 2024</div>
+        </div>
+      </div>
+
+      <div class="achieve-card reveal">
+        <div class="achieve-icon">♟️</div>
+        <div class="achieve-body">
+          <div class="achieve-title">WEST ZONE Inter-University Chess Participant</div>
+          <div class="achieve-desc">Bhopal (2024)</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="personal">
+    <div class="section-header reveal">
+      <div class="section-num">07 — Personal</div>
+      <h2>Personal Details</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="personal-grid reveal">
+      <div class="personal-item">
+        <div class="personal-label">Date of Birth</div>
+        <div class="personal-val">24 May 2003</div>
+      </div>
+      <div class="personal-item">
+        <div class="personal-label">Nationality</div>
+        <div class="personal-val">Indian</div>
+      </div>
+      <div class="personal-item">
+        <div class="personal-label">Languages Known</div>
+        <div class="personal-val">English, Telugu, Hindi</div>
+      </div>
+      <div class="personal-item">
+        <div class="personal-label">Address</div>
+        <div class="personal-val">Dwarakapet, Tekumatla, Jayashankar District, Telangana</div>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="section-header reveal">
-      <div class="section-num">04 — Contact</div>
+      <div class="section-num">08 — Contact</div>
       <h2>Let's Connect</h2>
       <div class="section-rule"></div>
     </div>
